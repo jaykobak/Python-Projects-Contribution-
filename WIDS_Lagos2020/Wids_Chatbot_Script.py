@@ -3,28 +3,49 @@
 import random
 
 #Create and store greetings and likely responses in a list data structure
-greetings = ["hola!I'm Annie", "hello! I'm Annie", 'hi!', 'Hi', 'hey!','hey',"What's up", 'Good day']
-responses = ['Okay',"I'm fine","I'm doing great", "I'm ok","I'm good",'Good','Awesome', 'Great','Superb','nice','ok']
+greetings = ["hola!I'm Annie,", "hello! I'm Annie,", 'hi!', 'Hi,', 'hey!','hey,',"What's up,", 'Good day,']
+# define a dictionary of responses
+responses = {
+        "good": "I'm so glad to hear that!",
+        "great": "That's awesome!",
+        "bad": "Oh dear, sorry to hear that.",
+        "terrible": "That sounds tough.",
+        "okay": "It's okay, things will get better!",
+        "fine": "That's good to hear!"
+    }
+
+# define a dictionary of follow up questions
+follow_up_questions = {
+    "good": "What's making you feel good today?",
+    "bad": "What's wrong?",
+    "terrible": "That sounds really tough. What's going on?",
+    "okay": "What's making you feel okay?",
+    "fine": "What's going on that's making you feel fine?"
+}
 
 #question = ['How are you?','How are you doing?']
 
 # Initiate a Welcome message and an introduction
-name = input('Welcome! What is your name?: ')
+name = input('Welcome!\nWhat is your name?: ')
 print('>>>')
-print((random.choice(greetings),name,'!Nice to meet you'))
+# pick a random greeting from the greetings list
+print(random.choice(greetings) + ' ' + name + '. ' + 'Nice to meet you!')
 
 #1st conversation
-feelings = input("How are you today?: ")
+feelings = input("In one word, how are you today?: ").lower()
 
-if feelings.capitalize() in responses:
-    print("I'm so Glad to hear that!")
+# Gives a response to the user's feelings
+if feelings in responses:
+    print(responses[feelings])
+    follow_up = follow_up_questions[feelings]
+    if follow_up:
+        print(follow_up)
+        reason = input('> ')
+        print('I understand. It is absolutely ok to feel that way sometimes. Thanks for sharing.')
 else:
-    print('Oh dear!')
-    print('Why do you feel', feelings)
-    reason = input('Please tell me: ')
-    print('I understand.It is absolutely ok to feel that way sometimes.Thanks for sharing')
-
-
+    print("I'm not sure I understand. Can you tell me more?")
+    reason = input("> ")
+    print("I understand. It is absolutely ok to feel that way sometimes. Thanks for sharing!")
 
 #2nd Conversation
 #Ask for user's age

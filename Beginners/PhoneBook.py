@@ -73,7 +73,7 @@ def phonebook():
             #Initiate a name variable
             name = input('Enter the name of the contact you wish to delete: ')
             #check if contact exists
-             if name in contact:
+            if name in contact:
                 #print the required contact
                 print('The contact is',name,':',contact[name])
                 
